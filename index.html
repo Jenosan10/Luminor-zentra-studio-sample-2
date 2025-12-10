@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Sri Lanka | Timeless Photography & Videography</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2C2C2C;
+            --secondary: #FFFFFF;
+            --accent: #B8860B;
+            --accent-light: #DAA520;
+            --light: #F9F7F5;
+            --medium: #E8E6E1;
+            --dark: #5A5A5A;
+            --transition: all 0.4s ease;
+            --border-radius: 8px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--primary);
+            background-color: var(--secondary);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 3.2rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .section-title p {
+            color: var(--dark);
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            padding: 5px 0;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center/cover no-repeat;
+            padding-top: 100px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            line-height: 1.1;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 40px;
+            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background-color: var(--accent);
+            color: white;
+            padding: 20px 25px;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: var(--shadow);
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            color: var(--dark);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(184, 134, 11, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background-color: var(--secondary);
+            border-radius: var(--border-radius);
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+            border: 1px solid var(--medium);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .service-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .service-description {
+            color: var(--dark);
+            margin-bottom: 30px;
+        }
+
+        /* Work Section */
+        .work {
+            background-color: var(--light);
+        }
+
+        .work-filter {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: transparent;
+            border: 1px solid var(--medium);
+            border-radius: 50px;
+            color: var(--dark);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            color: white;
+        }
+
+        .work-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .work-item {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+            height: 350px;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .work-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .work-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .work-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(44, 44, 44, 0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .work-item:hover .work-overlay {
+            opacity: 1;
+        }
+
+        .work-item:hover .work-img {
+            transform: scale(1.05);
+        }
+
+        .work-category {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .work-title {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-info p {
+            color: var(--dark);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .contact-detail {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(184, 134, 11, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background-color: var(--light);
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 20px;
+            background-color: var(--secondary);
+            border: 1px solid var(--medium);
+            border-radius: 4px;
+            color: var(--primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: var(--dark);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-about {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
+            color: white;
+        }
+
+        .footer-column h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                gap: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 80px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .work-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .service-card,
+            .contact-form {
+                padding: 40px 25px;
+            }
+            
+            .about-badge {
+                position: relative;
+                bottom: 0;
+                right: 0;
+                margin-top: 20px;
+                display: inline-block;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease forwards;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container nav-container">
+            <a href="#home" class="logo">Studio <span>Sri Lanka</span></a>
+            
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#work" class="nav-link">Work</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="hero">
+                <div class="container">
+                    <div class="hero-content fade-in">
+                        <h1 class="hero-title">Capturing <span>Timeless Moments</span></h1>
+                        <p class="hero-subtitle">Studio Sri Lanka specializes in photography and videography that tells your story with elegance, emotion, and artistry.</p>
+                        
+                        <div class="hero-buttons">
+                            <a href="#work" class="btn">View Our Work</a>
+                            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="section about">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>About Our Studio</h2>
+                        <p>We are passionate storytellers dedicated to capturing life's most precious moments with artistry and emotion.</p>
+                    </div>
+                    
+                    <div class="about-content">
+                        <div class="about-image fade-in">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Our Studio" class="about-img">
+                            <div class="about-badge">Since 2010</div>
+                        </div>
+                        
+                        <div class="about-text fade-in">
+                            <h3>Creating Memories That Last a Lifetime</h3>
+                            <p>Founded in Colombo, Studio Sri Lanka has been at the forefront of creative photography and videography for over a decade. Our approach combines technical excellence with artistic vision to create images and films that resonate emotionally.</p>
+                            <p>We believe that every moment has a story worth telling, and we're passionate about capturing those stories in their most authentic and beautiful form.</p>
+                            
+                            <div class="about-features">
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-award"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Award-Winning</h4>
+                                        <p>Recognized for excellence in creative photography</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Experienced Team</h4>
+                                        <p>Professionals with 10+ years of experience</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-camera"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Modern Equipment</h4>
+                                        <p>State-of-the-art photography & videography gear</p>
+                                    </div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="feature-icon">
+                                        <i class="fas fa-heart"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Passionate</h4>
+                                        <p>We love what we do, and it shows in our work</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Page -->
+        <section id="services" class="page">
+            <div class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Our Services</h2>
+                        <p>We offer a comprehensive range of photography and videography services tailored to your needs.</p>
+                    </div>
+                    
+                    <div class="services-grid">
+                        <div class="service-card fade-in">
+                            <div class="service-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h3 class="service-title">Wedding Photography</h3>
+                            <p class="service-description">Capture the magic of your special day with our professional wedding photography services. We preserve every emotion, detail, and moment.</p>
+                            <a href="#contact" class="btn">Learn More</a>
+                        </div>
+                        
+                        <div class="service-card fade-in" style="transition-delay: 0.1s">
+                            <div class="service-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h3 class="service-title">Cinematic Videography</h3>
+                            <p class="service-description">Transform your events into cinematic masterpieces with our professional videography services, from weddings to corporate events.</p>
+                            <a href="#contact" class="btn">Learn More</a>
+                        </div>
+                        
+                        <div class="service-card fade-in" style="transition-delay: 0.2s">
+                            <div class="service-icon">
+                                <i class="fas fa-portrait"></i>
+                            </div>
+                            <h3 class="service-title">Portrait Photography</h3>
+                            <p class="service-description">Professional portrait sessions for individuals, families, and groups. We capture personality and emotion in every shot.</p>
+                            <a href="#contact" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Page -->
+        <section id="work" class="page">
+            <div class="section work">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Our Work</h2>
+                        <p>Explore our portfolio of photography and videography projects that showcase our style and expertise.</p>
+                    </div>
+                    
+                    <div class="work-filter">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="wedding">Weddings</button>
+                        <button class="filter-btn" data-filter="portrait">Portraits</button>
+                        <button class="filter-btn" data-filter="corporate">Corporate</button>
+                        <button class="filter-btn" data-filter="events">Events</button>
+                    </div>
+                    
+                    <div class="work-grid">
+                        <div class="work-item fade-in" data-category="wedding">
+                            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Wedding Photography" class="work-img">
+                            <div class="work-overlay">
+                                <div class="work-category">Wedding</div>
+                                <h3 class="work-title">Traditional Tamil Wedding</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="work-item fade-in" data-category="portrait">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Portrait Photography" class="work-img">
+                            <div class="work-overlay">
+                                <div class="work-category">Portrait</div>
+                                <h3 class="work-title">Family Portrait Session</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="work-item fade-in" data-category="corporate">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" alt="Corporate Photography" class="work-img">
+                            <div class="work-overlay">
+                                <div class="work-category">Corporate</div>
+                                <h3 class="work-title">Corporate Brand Shoot</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact" class="page">
+            <div class="section">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Contact Us</h2>
+                        <p>Ready to capture your special moments? Get in touch with us to discuss your photography or videography needs.</p>
+                    </div>
+                    
+                    <div class="contact-container">
+                        <div class="contact-info fade-in">
+                            <h3>Let's Create Something Beautiful Together</h3>
+                            <p>Whether you're planning a wedding, a portrait session, or a corporate event, we'd love to hear about your vision and help bring it to life.</p>
+                            
+                            <div class="contact-details">
+                                <div class="contact-detail">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Our Studio</h4>
+                                        <p>123 Creative Street, Colombo 05, Sri Lanka</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Phone</h4>
+                                        <p>+94 11 234 5678</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-detail">
+                                    <div class="contact-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4>Email</h4>
+                                        <p>hello@studiosrilanka.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form fade-in">
+                            <form id="contactForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Subject" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Your Message" rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Studio <span>Sri Lanka</span></div>
+                    <p class="footer-about">We are a passionate team of photographers and videographers dedicated to capturing life's most precious moments with artistry and emotion.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#work">Work</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#services">Wedding Photography</a></li>
+                            <li><a href="#services">Videography</a></li>
+                            <li><a href="#services">Portrait Sessions</a></li>
+                            <li><a href="#services">Corporate Events</a></li>
+                            <li><a href="#services">Photo Editing</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contact Info</h4>
+                        <ul>
+                            <li><a href="#contact">Studio Address</a></li>
+                            <li><a href="#contact">Phone: +94 11 234 5678</a></li>
+                            <li><a href="#contact">Email: hello@studiosrilanka.com</a></li>
+                            <li><a href="#contact">Business Hours: 9AM - 6PM</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Studio Sri Lanka. All Rights Reserved. | Timeless Photography & Videography</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.innerHTML = navMenu.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Single Page Application Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // Add active class to clicked link
+                e.target.classList.add('active');
+                
+                // Get target page id
+                const targetPage = e.target.getAttribute('href').substring(1);
+                
+                // Hide all pages
+                document.querySelectorAll('.page').forEach(page => {
+                    page.classList.remove('active');
+                });
+                
+                // Show target page
+                document.getElementById(targetPage).classList.add('active');
+                
+                // Update URL without refreshing
+                history.pushState(null, null, `#${targetPage}`);
+                
+                // Scroll to top of page
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Trigger animations for new page
+                setTimeout(() => {
+                    animateOnScroll();
+                }, 100);
+            });
+        });
+        
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.substring(1) || 'home';
+            
+            // Update active nav link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${hash}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Show corresponding page
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(hash).classList.add('active');
+        });
+        
+        // Portfolio Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const workItems = document.querySelectorAll('.work-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(button => button.classList.remove('active'));
+                
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filterValue = btn.getAttribute('data-filter');
+                
+                workItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const name = contactForm.querySelector('input[type="text"]').value;
+            
+            // Show success message
+            alert(`Thank you, ${name}! Your message has been sent. We'll get back to you within 24 hours.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            }
+        });
+        
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Initialize with home page if no hash in URL
+        if (!window.location.hash) {
+            window.location.hash = '#home';
+        } else {
+            // Trigger popstate to handle existing hash
+            window.dispatchEvent(new Event('popstate'));
+        }
+        
+        // Initialize animations on page load
+        setTimeout(fadeInOnScroll, 100);
+    </script>
+</body>
+</html>
